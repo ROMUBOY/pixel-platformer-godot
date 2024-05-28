@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ch73fxy0ht8am"]
+
+[ext_resource type="PackedScene" uid="uid://pfomjs0407td" path="res://scenes/tile_map.tscn" id="1_8t0em"]
+[ext_resource type="PackedScene" uid="uid://bwj26lbcc2f2v" path="res://scenes/player.tscn" id="2_u33bs"]
+[ext_resource type="PackedScene" uid="uid://4jvhxf64vppa" path="res://scenes/spike.tscn" id="3_66ta4"]
+
+[node name="World" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_8t0em")]
+layer_0/tile_data = PackedInt32Array(327686, 131072, 6, 327687, 131072, 6, 327688, 131072, 6, 327689, 131072, 6, 327685, 65536, 6, 393224, 131072, 7, 393222, 131072, 7, 393223, 131072, 7, 393225, 131072, 7, 393221, 65536, 7, 393226, 131072, 7, 327690, 131072, 6, 262153, 131072, 6, 262154, 131072, 1, 262152, 131072, 6, 262151, 131072, 1, 262150, 262144, 1, 196616, 65536, 1, 196617, 196608, 1, 262149, 327680, 0, 196614, 196608, 1, 196613, 131072, 1, 262155, 327680, 1, 327691, 131072, 6, 393227, 131072, 7, 262156, 196608, 1, 327692, 196608, 6, 393228, 196608, 7, 196619, 0, 1, 65551, 196608, 0, 65550, 131072, 0, 65549, 65536, 0, 3, 0, 1, 65538, 65536, 1, 131073, 65536, 1, 65539, 196608, 6, 131074, 327680, 1, 131075, 196608, 6, 196612, 131072, 1, 196611, 131072, 6, 262148, 131072, 7, 262147, 131072, 7, 196610, 131072, 6, 262146, 131072, 7, 262145, 65536, 7, 196609, 65536, 6, 196622, 0, 0, 9, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_u33bs")]
+z_index = 1
+position = Vector2(108, 18)
+
+[node name="spike" parent="." instance=ExtResource("3_66ta4")]
+position = Vector2(135, 63)
