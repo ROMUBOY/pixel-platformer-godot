@@ -29,10 +29,7 @@ func _physics_process(delta):
 		apply_aceleration(direction)
 		if is_on_floor():
 			$AnimatedSprite2D.play("run")
-			if direction > 0:
-				$AnimatedSprite2D.flip_h = true
-			else:
-				$AnimatedSprite2D.flip_h = false
+			$AnimatedSprite2D.flip_h = direction > 0
 	else:
 		apply_friction()
 		if is_on_floor():
