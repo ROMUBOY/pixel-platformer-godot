@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ch73fxy0ht8am"]
+[gd_scene load_steps=7 format=3 uid="uid://ch73fxy0ht8am"]
 
 [ext_resource type="PackedScene" uid="uid://pfomjs0407td" path="res://scenes/tile_map.tscn" id="1_8t0em"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_la7ug"]
 [ext_resource type="PackedScene" uid="uid://bwj26lbcc2f2v" path="res://scenes/player.tscn" id="2_u33bs"]
 [ext_resource type="PackedScene" uid="uid://4jvhxf64vppa" path="res://scenes/spike.tscn" id="3_66ta4"]
 [ext_resource type="PackedScene" uid="uid://xlxw6aqwgc02" path="res://scenes/enemy.tscn" id="5_upwef"]
+[ext_resource type="PackedScene" uid="uid://blhnhl7pniaa6" path="res://scenes/ladder.tscn" id="6_345ew"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_la7ug")
@@ -25,3 +26,12 @@ position = Vector2(225, 72)
 
 [node name="enemy2" parent="." instance=ExtResource("5_upwef")]
 position = Vector2(261, 18)
+
+[node name="ladder" parent="." instance=ExtResource("6_345ew")]
+position = Vector2(81, 45)
+
+[node name="ladder2" parent="." instance=ExtResource("6_345ew")]
+position = Vector2(81, 27)
+
+[node name="ladder3" parent="." instance=ExtResource("6_345ew")]
+position = Vector2(81, 9)
