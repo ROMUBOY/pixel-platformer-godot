@@ -1,15 +1,11 @@
 extends CharacterBody2D
 class_name Player
 
-@export var SPEED = 100.0
-@export var JUMP_VELOCITY = -280.0
-@export var jump_release_force = -150
-@export var acceleration = 10
-@export var friction = 10
+@export var moveDate : Resource
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-@export var additional_fall_gravity = 4
+
 
 func _ready():
 	$AnimatedSprite2D.frames = load("res://assets/frames/playerGreenSkin.tres")
@@ -37,12 +33,12 @@ func _physics_process(delta):
 		
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		velocity.y = moveDate.JUMP_VELOCITY
 	else:
-		if Input.is_action_just_released("ui_accept") and velocity.y < jump_release_force:
-			velocity.y = jump_release_force
+		if Input.is_action_just_released("ui_accept") and velocity.y < moveDate.jump_release_force:
+			velocity.y = moveDate.jump_release_force
 		if velocity.y > 0:
-			velocity.y += additional_fall_gravity
+			velocity.y += moveDate.additional_fall_gravity
 	
 	var was_in_air = not is_on_floor()
 	move_and_slide()
@@ -56,7 +52,7 @@ func apply_gravity(gravity):
 	velocity.y = min(velocity.y, 300)
 
 func apply_friction():
-	velocity.x = move_toward(velocity.x, 0, friction)
+	velocity.x = move_toward(velocity.x, 0, moveDate.friction)
 
 func apply_aceleration(amount):
-	velocity.x = move_toward(velocity.x, SPEED * amount, acceleration)
+	velocity.x = move_toward(velocity.x, moveDate.SPEED * amount, moveDate.acceleration)
