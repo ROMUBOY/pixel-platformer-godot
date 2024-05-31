@@ -10,5 +10,5 @@ jump_release_force = -150
 acceleration = 10
 friction = 10
 additional_fall_gravity = 4
-double_jump_count = 0
+double_jump_count = 1
 climb_speed = 50

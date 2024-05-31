@@ -34,39 +34,14 @@ func _physics_process(delta):
 func move_state(direction, delta):
 	if is_on_ladder() and Input.is_action_just_pressed("move_up"):
 		state = CLIMB
-	# Add the gravity.
+	
 	if not is_on_floor():
 		apply_gravity(gravity * delta)
 		$AnimatedSprite2D.play("jump")
 	
-	if direction:
-		apply_aceleration(direction)
-		if is_on_floor():
-			$AnimatedSprite2D.play("run")
-			$AnimatedSprite2D.flip_h = direction > 0
-	else:
-		apply_friction()
-		if is_on_floor():
-			$AnimatedSprite2D.play("idle")
-		
-	# Handle jump.
-	if is_on_floor() or coyote_jump:
-		double_jump = moveDate.double_jump_count
-		if Input.is_action_just_pressed("jump") or buffered_jump:
-			velocity.y = moveDate.JUMP_VELOCITY
-			buffered_jump = false
-			coyote_jump = false
-	else:
-		if Input.is_action_just_released("jump") and velocity.y < moveDate.jump_release_force:
-			velocity.y = moveDate.jump_release_force
-		if Input.is_action_just_pressed("jump") and double_jump > 0:
-			velocity.y = moveDate.JUMP_VELOCITY
-			double_jump -= 1
-		if Input.is_action_just_pressed("jump"):
-			buffered_jump = true
-			jump_buffer_timer.start()
-		if velocity.y > 0:
-			velocity.y += moveDate.additional_fall_gravity			
+	handle_horizontal_movement(direction)
+	
+	handle_jump()
 	
 	var was_in_air = not is_on_floor()
 	var was_on_floor = is_on_floor()
@@ -77,11 +52,67 @@ func move_state(direction, delta):
 	if just_landed:
 		$AnimatedSprite2D.animation = "run"
 		$AnimatedSprite2D.frame = 1
-		
+	
 	var just_left_ground = not is_on_floor() and was_on_floor
 	if just_left_ground and velocity.y >= 0:
 		coyote_jump = true
 		coyote_jump_timer.start()
+
+func handle_horizontal_movement(direction):
+	if direction:
+		apply_aceleration(direction)
+		if is_on_floor():
+			$AnimatedSprite2D.play("run")
+			$AnimatedSprite2D.flip_h = direction > 0
+	else:
+		apply_friction()
+		if is_on_floor():
+			$AnimatedSprite2D.play("idle")
+
+func handle_jump():
+	if is_on_floor():
+		reset_double_jump()
+	
+	if can_jump():
+		input_jump()
+	else:
+		input_jump_release()
+		
+		input_double_jump()
+		
+		buffer_jump()
+		
+		fast_fall()
+
+func input_jump_release():
+	if Input.is_action_just_released("jump") and velocity.y < moveDate.jump_release_force:
+			velocity.y = moveDate.jump_release_force
+
+func input_double_jump():
+	if Input.is_action_just_pressed("jump") and double_jump > 0:
+			velocity.y = moveDate.JUMP_VELOCITY
+			double_jump -= 1
+
+func buffer_jump():
+	if Input.is_action_just_pressed("jump"):
+			buffered_jump = true
+			jump_buffer_timer.start()
+
+func fast_fall():
+	if velocity.y > 0:
+			velocity.y += moveDate.additional_fall_gravity
+
+func reset_double_jump():
+	double_jump = moveDate.double_jump_count
+
+func input_jump():
+	if Input.is_action_just_pressed("jump") or buffered_jump:
+			velocity.y = moveDate.JUMP_VELOCITY
+			buffered_jump = false
+			coyote_jump = false
+
+func can_jump():
+	return is_on_floor() or coyote_jump
 
 func climb_state(direction):
 	if not is_on_ladder():
