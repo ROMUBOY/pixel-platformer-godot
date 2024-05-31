@@ -7,3 +7,5 @@ class_name PlayerMovementData
 @export var acceleration = 10
 @export var friction = 10
 @export var additional_fall_gravity = 4
+@export var double_jump_count = 1
+@export var climb_speed = 50
