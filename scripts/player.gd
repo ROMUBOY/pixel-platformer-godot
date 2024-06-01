@@ -90,6 +90,7 @@ func input_jump_release():
 
 func input_double_jump():
 	if Input.is_action_just_pressed("jump") and double_jump > 0:
+			SoundPlayer.play_sound(SoundPlayer.JUMP_SOUND)
 			velocity.y = moveDate.JUMP_VELOCITY
 			double_jump -= 1
 
@@ -107,6 +108,7 @@ func reset_double_jump():
 
 func input_jump():
 	if Input.is_action_just_pressed("jump") or buffered_jump:
+			SoundPlayer.play_sound(SoundPlayer.JUMP_SOUND)
 			velocity.y = moveDate.JUMP_VELOCITY
 			buffered_jump = false
 			coyote_jump = false
@@ -125,6 +127,10 @@ func climb_state(direction):
 	
 	velocity = direction * moveDate.climb_speed
 	move_and_slide()
+
+func player_die():
+	SoundPlayer.play_sound(SoundPlayer.HURT_SOUND)
+	get_tree().reload_current_scene()
 
 func is_on_ladder():
 	if not ladder_check.is_colliding(): 
