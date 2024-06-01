@@ -26,6 +26,6 @@ func _ready():
 	play_updated_animation(animation_player)
 
 func play_updated_animation(ap):
-	match animation_player:
+	match animation_type:
 		ANIMATION_TYPE.Loop: ap.play("LoopAlongPath")
 		ANIMATION_TYPE.Bounce: ap.play("BounceAlongPath")

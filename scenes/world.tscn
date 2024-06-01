@@ -66,9 +66,9 @@ position = Vector2(477, -81)
 
 [node name="MovingSpikeEnemy" parent="." instance=ExtResource("7_drvye")]
 position = Vector2(594, -189)
-animation_type = 1
 
 [node name="MovingSpikeEnemy2" parent="." instance=ExtResource("7_drvye")]
 position = Vector2(442, -135)
 curve = SubResource("Curve2D_m8ouu")
 animation_type = 1
+speed = 2
