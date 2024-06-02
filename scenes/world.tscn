@@ -1,15 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://ch73fxy0ht8am"]
+[gd_scene load_steps=12 format=3 uid="uid://cpnyt11ou8f4i"]
 
 [ext_resource type="PackedScene" uid="uid://pfomjs0407td" path="res://scenes/tile_map.tscn" id="1_8t0em"]
-[ext_resource type="Script" path="res://scripts/world.gd" id="1_la7ug"]
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_la7ug"]
 [ext_resource type="PackedScene" uid="uid://bwj26lbcc2f2v" path="res://scenes/player.tscn" id="2_u33bs"]
-[ext_resource type="PackedScene" uid="uid://4jvhxf64vppa" path="res://scenes/spike.tscn" id="3_66ta4"]
-[ext_resource type="PackedScene" uid="uid://xlxw6aqwgc02" path="res://scenes/enemy.tscn" id="5_upwef"]
+[ext_resource type="PackedScene" uid="uid://4jvhxf64vppa" path="res://scenes/enemies/spike.tscn" id="3_66ta4"]
+[ext_resource type="PackedScene" uid="uid://xlxw6aqwgc02" path="res://scenes/enemies/enemy.tscn" id="5_upwef"]
 [ext_resource type="PackedScene" uid="uid://blhnhl7pniaa6" path="res://scenes/ladder.tscn" id="6_345ew"]
-[ext_resource type="PackedScene" uid="uid://dcwyayr1hmrld" path="res://scenes/moving_spike_enemy.tscn" id="7_drvye"]
+[ext_resource type="PackedScene" uid="uid://dcwyayr1hmrld" path="res://scenes/enemies/moving_spike_enemy.tscn" id="7_drvye"]
 [ext_resource type="PackedScene" uid="uid://cawytpmo5q3i1" path="res://scenes/checkpoint.tscn" id="8_ye8ol"]
 [ext_resource type="AudioStream" uid="uid://bc2y0113uyf53" path="res://sounds/Retro Beat.ogg" id="9_pexh2"]
-[ext_resource type="PackedScene" uid="uid://dirf65hkegup8" path="res://scenes/stomp_enemy.tscn" id="10_287xr"]
+[ext_resource type="PackedScene" uid="uid://dirf65hkegup8" path="res://scenes/enemies/stomp_enemy.tscn" id="10_287xr"]
 
 [sub_resource type="Curve2D" id="Curve2D_m8ouu"]
 _data = {

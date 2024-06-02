@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://dcwyayr1hmrld"]
 
-[ext_resource type="Script" path="res://scripts/moving_spike_enemy.gd" id="1_iwhtk"]
+[ext_resource type="Script" path="res://scripts/enemies/moving_spike_enemy.gd" id="1_iwhtk"]
 [ext_resource type="Texture2D" uid="uid://7kg457wx771o" path="res://assets/sprites/default/tilemap-characters_packed.png" id="1_nj6q7"]
-[ext_resource type="PackedScene" uid="uid://cdsbfc054jmvq" path="res://scenes/hitbox.tscn" id="2_s0wyk"]
+[ext_resource type="PackedScene" uid="uid://cdsbfc054jmvq" path="res://scenes/enemies/hitbox.tscn" id="2_s0wyk"]
 
 [sub_resource type="Curve2D" id="Curve2D_n6tv3"]
 _data = {
