@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://degreb46bwyt0"]
+[gd_scene load_steps=3 format=3 uid="uid://degreb46bwyt0"]
 
 [ext_resource type="Script" path="res://scripts/sound_player.gd" id="1_mp3td"]
 [ext_resource type="AudioStream" uid="uid://qru6317wpqnk" path="res://sounds/hurt_sound.ogg" id="2_pwvul"]
-[ext_resource type="AudioStream" uid="uid://bc2y0113uyf53" path="res://sounds/Retro Beat.ogg" id="3_enf42"]
 
 [node name="SoundPlayer" type="Node"]
 script = ExtResource("1_mp3td")
@@ -33,8 +32,3 @@ bus = &"sfx"
 
 [node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="AudioPlayers"]
 bus = &"sfx"
-
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_enf42")
-autoplay = true
-bus = &"music"
