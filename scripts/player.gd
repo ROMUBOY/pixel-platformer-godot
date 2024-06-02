@@ -44,9 +44,9 @@ func move_state(direction, delta):
 		apply_gravity(gravity * delta)
 		$AnimatedSprite2D.play("jump")
 	
-	handle_horizontal_movement(direction)
+	handle_horizontal_movement(direction, delta)
 	
-	handle_jump()
+	handle_jump(delta)
 	
 	var was_in_air = not is_on_floor()
 	var was_on_floor = is_on_floor()
@@ -63,18 +63,18 @@ func move_state(direction, delta):
 		coyote_jump = true
 		coyote_jump_timer.start()
 
-func handle_horizontal_movement(direction):
+func handle_horizontal_movement(direction, delta):
 	if direction:
-		apply_aceleration(direction)
+		apply_aceleration(direction, delta)
 		if is_on_floor():
 			$AnimatedSprite2D.play("run")
 			$AnimatedSprite2D.flip_h = direction > 0
 	else:
-		apply_friction()
+		apply_friction(delta)
 		if is_on_floor():
 			$AnimatedSprite2D.play("idle")
 
-func handle_jump():
+func handle_jump(delta):
 	if is_on_floor():
 		reset_double_jump()
 	
@@ -87,7 +87,7 @@ func handle_jump():
 		
 		buffer_jump()
 		
-		fast_fall()
+		fast_fall(delta)
 
 func input_jump_release():
 	if Input.is_action_just_released("jump") and velocity.y < moveDate.jump_release_force:
@@ -104,9 +104,9 @@ func buffer_jump():
 			buffered_jump = true
 			jump_buffer_timer.start()
 
-func fast_fall():
+func fast_fall(delta):
 	if velocity.y > 0:
-			velocity.y += moveDate.additional_fall_gravity
+			velocity.y += moveDate.additional_fall_gravity * delta
 
 func reset_double_jump():
 	double_jump = moveDate.double_jump_count
@@ -153,11 +153,11 @@ func apply_gravity(gravity):
 	velocity.y += gravity
 	velocity.y = min(velocity.y, 300)
 
-func apply_friction():
-	velocity.x = move_toward(velocity.x, 0, moveDate.friction)
+func apply_friction(delta):
+	velocity.x = move_toward(velocity.x, 0, moveDate.friction * delta)
 
-func apply_aceleration(amount):
-	velocity.x = move_toward(velocity.x, moveDate.SPEED * amount, moveDate.acceleration)
+func apply_aceleration(amount, delta):
+	velocity.x = move_toward(velocity.x, moveDate.SPEED * amount, moveDate.acceleration * delta)
 
 func _on_jump_buffer_timer_timeout():
 	buffered_jump = false

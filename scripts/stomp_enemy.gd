@@ -37,6 +37,6 @@ func land_state():
 
 func rise_state(delta):
 	animated_sprite_2d.play("idle")
-	position.y = move_toward(position.y, start_position.y, 20* delta)
+	position.y = move_toward(position.y, start_position.y, 20 * delta)
 	if position.y == start_position.y:
 		state = HOVER
