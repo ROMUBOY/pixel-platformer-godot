@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ch73fxy0ht8am"]
+[gd_scene load_steps=10 format=3 uid="uid://ch73fxy0ht8am"]
 
 [ext_resource type="PackedScene" uid="uid://pfomjs0407td" path="res://scenes/tile_map.tscn" id="1_8t0em"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_la7ug"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://xlxw6aqwgc02" path="res://scenes/enemy.tscn" id="5_upwef"]
 [ext_resource type="PackedScene" uid="uid://blhnhl7pniaa6" path="res://scenes/ladder.tscn" id="6_345ew"]
 [ext_resource type="PackedScene" uid="uid://dcwyayr1hmrld" path="res://scenes/moving_spike_enemy.tscn" id="7_drvye"]
+[ext_resource type="PackedScene" uid="uid://cawytpmo5q3i1" path="res://scenes/checkpoint.tscn" id="8_ye8ol"]
 
 [sub_resource type="Curve2D" id="Curve2D_m8ouu"]
 _data = {
@@ -72,3 +73,13 @@ position = Vector2(442, -135)
 curve = SubResource("Curve2D_m8ouu")
 animation_type = 1
 speed = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Checkpoint" parent="." instance=ExtResource("8_ye8ol")]
+position = Vector2(351, 0)
+
+[node name="Checkpoint2" parent="." instance=ExtResource("8_ye8ol")]
+position = Vector2(531, -90)
