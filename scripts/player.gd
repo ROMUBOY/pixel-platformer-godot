@@ -8,6 +8,7 @@ enum { MOVE, CLIMB }
 var state = MOVE
 var buffered_jump = false
 var coyote_jump = false
+var on_door = false
 
 @onready var double_jump = moveDate.double_jump_count
 
